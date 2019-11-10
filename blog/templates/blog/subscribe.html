@@ -1,0 +1,86 @@
+{% extends 'blog/base.html' %}
+{% load blog %}
+{% load static %}
+{% block description %}Rss, Atom, Line, メール等でNaritoブログの更新をお知らせします。{% endblock %}
+{% block title %}ブログの購読 - Narito Blog{% endblock %}
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'blog/css/subscribe.css' %}">
+    {% if USE_WEB_PUSH %}
+        <link rel="manifest" href="/manifest.json"/>
+        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+        <script>
+            var OneSignal = window.OneSignal || [];
+            OneSignal.push(function () {
+                OneSignal.init({
+                    appId: '{{ ONE_SIGNAL_APP_ID }}',
+                });
+            });
+        </script>
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+    <section id="feed">
+        <h2>ブログ記事フィード</h2>
+        <ul>
+            <li><a href="{% url 'blog:rss' %}">RSS</a>
+            </li>
+            <li><a href="{% url 'blog:atom' %}">Atom</a>
+            </li>
+        </ul>
+    </section>
+
+
+    <section id="email">
+        <h2>メールで新着記事を受け取る</h2>
+        <form action="" method="POST">
+            {{ form.non_field_errors }}
+            {% for field in form %}
+                <div class="field">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.help_text %}
+                        <span class="helptext">{{ field.help_text }}</span>
+                    {% endif %}
+                    {{ field.errors }}
+                </div>
+
+            {% endfor %}
+
+            <button type="submit">送信</button>
+
+            {% csrf_token %}
+        </form>
+    </section>
+
+
+    {% if USE_LINE_BOT %}
+        <section id="line">
+            <h2>Lineで新着記事を受け取る</h2>
+            <p><img src="{% static 'blog/lineqr.png' %}"></p>
+        </section>
+    {% endif %}
+
+
+    {% if USE_WEB_PUSH %}
+        <section id="push">
+            <h2>プッシュ通知で受け取る</h2>
+            <div class='onesignal-customlink-container'></div>
+        </section>
+    {% endif %}
+
+    <aside id="ads">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5235456993770661"
+             data-ad-slot="2942976583"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </aside>
+
+{% endblock %}

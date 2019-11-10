@@ -1,0 +1,18 @@
+{% extends 'diaries/base.html' %}
+{% load diary %}
+
+{% block title %}{{ diary.title }} - My Diary{% endblock %}
+
+{% block content %}
+    <p id="back"><a href="#" onclick="window.history.back(); return false;">戻る</a></p>
+    <article data-aos="fade-up" data-aos-duration="1000">
+        <h1>{{ diary.title }}</h1>
+        <div class="contents">
+            {{ diary.text | linebreaks | urlize2 }}
+        </div>
+        <p class="meta">
+            {{ diary.category }}
+            <time datetime="{{ diary.created_at | date:'Y-m-d' }}">{{ diary.created_at | date:'Y年n月j日' }}</time>
+        </p>
+    </article>
+{% endblock %}

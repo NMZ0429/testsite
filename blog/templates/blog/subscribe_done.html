@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+{% load blog %}
+{% load static %}
+{% block description %}Rss, Atom, Line, メール等でNaritoブログの更新をお知らせします。{% endblock %}
+{% block title %}Narito Blogを購読する{% endblock %}
+{% block extrahead %}<link rel="stylesheet" href="{% static 'blog/css/subscribe.css' %}">{% endblock %}
+
+{% block content %}
+    <p>ブログのメール購読を完了しました。<br>更新を楽しみにしていてください。</p>
+    <aside id="ads">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5235456993770661"
+             data-ad-slot="2942976583"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </aside>
+{% endblock %}

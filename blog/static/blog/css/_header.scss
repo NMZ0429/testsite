@@ -1,0 +1,33 @@
+header#site-header {
+  > h1 {
+    font-size: 30px;
+    font-weight: normal;
+    color:  #666;
+    margin: 0;
+    font-family: 'Source Code Pro', monospace;
+  }
+
+  > nav#site-nav {
+    ul {
+      list-style-type: none;
+      padding: 0;
+      display: grid;
+      grid-auto-flow: column;
+      grid-column-gap: 20px;
+      column-gap: 20px;
+
+      a {
+        font-size: 14px;
+        color: #666;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+    }
+  }
+}
+
+

@@ -1,0 +1,315 @@
+@charset "UTF-8";
+/* 共通設定 */
+* {
+  margin: 0;
+}
+
+a {
+  color: #000d99;
+  text-decoration: underline;
+}
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3 {
+  line-height: 1.5;
+  background-color: transparent;
+  /* admin管理画面用の設定 */
+  font-weight: normal;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 2;
+}
+
+body {
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  /* テキストの自動拡大を無効 */
+  color: #333;
+  font-family: "Sawarabi Gothic", sans-serif;
+}
+
+/* お知らせ欄 */
+#notify {
+  opacity: 0;
+  background-color: #333;
+  padding: 20px;
+  width: 200px;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: #ffffff;
+  -webkit-animation: fade-in-out 7s linear;
+}
+
+@-webkit-keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.card {
+  background-color: #fff;
+  box-shadow: 0 1px 6px #ccc;
+  border-radius: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 1064px) {
+  h1, h2, h3 {
+    margin-left: -1em;
+  }
+}
+header#site-header > h1 {
+  font-size: 30px;
+  font-weight: normal;
+  color: #666;
+  margin: 0;
+  font-family: "Source Code Pro", monospace;
+}
+header#site-header > nav#site-nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 20px;
+  column-gap: 20px;
+}
+header#site-header > nav#site-nav ul a {
+  font-size: 14px;
+  color: #666;
+  text-decoration: none;
+}
+header#site-header > nav#site-nav ul a:hover {
+  text-decoration: underline;
+}
+
+footer#site-footer {
+  font-size: 14px;
+  color: #666;
+  padding: 20px 0;
+  font-family: "Source Code Pro", "Sawarabi Gothic", sans-serif;
+}
+footer#site-footer > ul {
+  list-style-type: none;
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: 10px;
+  row-gap: 10px;
+  padding: 0;
+}
+footer#site-footer > ul a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #666;
+}
+footer#site-footer > ul a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 1024px) {
+  footer#site-footer > ul {
+    grid-auto-flow: column;
+    grid-column-gap: 20px;
+    column-gap: 20px;
+  }
+}
+body {
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr) 10px;
+  /* pre code 対策のため、1fr→minmax(0, 1fr) */
+  grid-template-rows: [head] 100px [main] auto [foot] auto;
+  grid-row-gap: 40px;
+  row-gap: 40px;
+}
+body > * {
+  grid-column: 2/-2;
+}
+body > header#site-header {
+  grid-row: head;
+  justify-self: start;
+  align-self: center;
+}
+body > form#top-form {
+  display: none;
+  grid-row: head;
+  justify-self: start;
+  align-self: center;
+}
+body > form#top-form > input#id_key_word {
+  margin-right: 10px;
+}
+body > form#top-form > div.dropdown-container {
+  display: inline-block;
+  position: relative;
+  margin-right: 20px;
+}
+body > form#top-form > div.dropdown-container > p.dropdown-trigger {
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+}
+body > form#top-form > div.dropdown-container > p.dropdown-trigger:hover {
+  text-decoration: underline;
+}
+body > form#top-form > div.dropdown-container > div.dropdown-item {
+  display: none;
+  position: absolute;
+  background-color: #f5f5f5;
+  padding: 10px;
+  z-index: 1;
+}
+body > form#top-form > div.dropdown-container > div.dropdown-item.show {
+  display: block;
+}
+body > form#top-form > div.dropdown-container > div.dropdown-item > select#id_search_tags {
+  height: 300px;
+}
+body > footer {
+  grid-row: foot;
+  justify-self: start;
+  align-self: center;
+}
+body::before {
+  content: "";
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ccc;
+  grid-column: 1/-1;
+  grid-row: head;
+  z-index: -1;
+}
+body::after {
+  content: "";
+  background-color: #f5f5f5;
+  border-top: 1px solid #ccc;
+  grid-column: 1/-1;
+  grid-row: foot;
+  z-index: -1;
+}
+
+@media (min-width: 768px) {
+  body {
+    grid-template-columns: 40px minmax(0, 1fr) 40px;
+    /* pre code 対策のため、1fr→minmax(0, 1fr) */
+  }
+}
+@media (min-width: 1024px) {
+  body {
+    grid-template-columns: 1fr [left] 564px [right] 336px 1fr;
+    grid-column-gap: 100px;
+    column-gap: 100px;
+    grid-template-rows: [head] 100px [main] auto [foot] auto;
+  }
+  body > header#site-header {
+    grid-row: head;
+    justify-self: end;
+    align-self: center;
+  }
+  body > form#top-form {
+    display: block;
+  }
+}
+input[type=text], input[type=email], input[type=number],
+select, textarea {
+  font-family: "Source Code Pro", "Sawarabi Gothic", sans-serif;
+  font-size: 14px;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: solid 1px #ccc;
+  background-color: #fff;
+}
+
+button[type=submit], button[type=button], a.button {
+  font-family: "Sawarabi Gothic", sans-serif;
+  font-size: 14px;
+  -webkit-appearance: none;
+  padding: 7px 15px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: solid 1px #ccc;
+  /* a要素用の設定 */
+  box-sizing: border-box;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  color: #333;
+  /* button要素用の設定 */
+  cursor: pointer;
+}
+
+button[type=submit]:hover, button[type=button]:hover, a.button:hover {
+  opacity: 0.5;
+}
+
+span.helptext {
+  font-size: 12px;
+  color: #999;
+}
+
+ul.errorlist {
+  padding: 0;
+  list-style-type: none;
+  color: red;
+}
+
+div.field {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+div.field > label {
+  display: block;
+  margin-bottom: 5px;
+}
+div.field > input, div.field > select, div.field > textarea, div.field > button, div.field > a.button {
+  width: 100%;
+  display: block;
+}
+div.field ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+body {
+  grid-template-rows: [head] 100px [feed] auto [email] auto [line] auto [push] auto [ads] 280px [foot] auto;
+}
+body > section {
+  margin-bottom: 100px;
+}
+
+@media (min-width: 1024px) {
+  body {
+    grid-template-rows: [head] 100px [feed ads] auto [email] auto [line] auto [push] auto [foot] auto;
+  }
+  body > section, body > p {
+    grid-column: left;
+  }
+  body > aside#ads {
+    grid-row: ads;
+    grid-column: right;
+    height: 280px;
+  }
+}
+
+/*# sourceMappingURL=subscribe.css.map */

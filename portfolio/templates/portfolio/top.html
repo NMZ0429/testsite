@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="パソコンのこととか、ゲームとか、漫画とか、サッカーとか、偶に勉強とか"></meta>
+    <title>GEN's site</title>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Noto+Sans+JP:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'portfolio/style.css' %}">
+    {% block extra_css %}{% endblock %}
+
+</head>
+<body>
+<header>ぶっぷんのブンブンプリプリ</header>
+<h1>特に意味はない!!<br>いろんな記事が増えたらいいな</h1>
+  <span id="box1"></span>
+  <span id="box2"></span>
+  <span id="box3"></span>
+  <span id="box4"></span>
+  <span id="box5"></span>
+  <span id="box6"></span>
+
+
+<section id="about-me">
+  <h2>About Me</h2>
+    <dl>
+        <dt>name</dt>
+        <dd>Gen Tomita)</dd>
+
+        <dt>since</dt>
+        <dd>1998年4月29日（ソース不明）</dd>
+
+
+        <dt>city</dt>
+        <dd>Mississauga ON</dd>
+
+        <dt>Main </dt>
+        <dd> 未定</dd>
+
+        <dt>Sub</dt>
+        <dd>未定</dd>
+
+
+        <dt>email</dt>
+        <dd><a href="gen.tomita0429@gmail.com">gen.tomita0429@gmail.com</a></dd>
+
+        <dt>sns</dt>
+        <dd>
+            <a class="twitter" href="https://twitter.com/GenTomitaCa" target="_blank" title="Twitter"><i
+                    class="fab fa-twitter-square fa-2x"></i></a>
+            <a class="facebook" href="https://twitter.com/GenTomitaCa" target="_blank"
+               title="Facebookページ"><i class="fab fa-facebook-square fa-2x"></i></a>
+            <a class="github" href="https://github.com/NMZ0429" target="_blank" title="Githubページ"><i
+                    class="fab fa-github fa-2x"></i></a>
+        </dd>
+    </dl>
+
+</section>
+
+<section id="say-hello">
+    <h2>say hello</h2>
+    <p>何を書くからこれから決める。</p>
+    <p>
+        ぶっぷんこ。</p>
+    <p>なるようになるさ。</p>
+</section>
+
+
+<section id="product">
+    <h2>Menu</h2>
+    <dl>
+        <dt>blogs</dt>
+        <dd><a href="blog">Blog </a></dd>
+        <dd><a href="diaries">Diary</a></dd>
+
+        <dt>Book</dt>
+        <dd><a href="http://www.cutt.co.jp/book/978-4-87783-837-9.html">Python［基礎編］ワークブック</a></dd>
+        <dd><a href="http://www.cutt.co.jp/book/978-4-87783-806-5.html">Python［基礎編］ワークブック ルビ付き</a></dd>
+
+        <dt>video</dt>
+        <dd><a href="https://www.udemy.com/pythondjango-a/learn/v4/overview">Python/Django入門講座(Udemy)</a></dd>
+        <dd><a href="https://share-wis.com/courses/django-python-web">Python/Django入門講座(ShareWis)</a></dd>
+
+    </dl>
+</section>
+
+<footer>© 2019 NMZ0429.</footer>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72333380-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-72333380-3');
+</script>
+
+</body>
+</html>

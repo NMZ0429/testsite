@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="{% block keywords %}Python,Django,プログラミング,ブログ{% endblock %}">
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <title>{% block title %}UTMJN Blog{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic|Source+Code+Pro&display=swap" rel="stylesheet">
+
+    {% block extrahead %}{% endblock %}
+</head>
+<body>
+{% if messages %}
+    <div id="notify">
+        {% for message in messages %}
+            <p> {{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<header id="site-header">
+    <h1>UTMJN Blog</h1>
+    <nav id="site-nav">
+        <ul>
+            <li><a href="{% url 'blog:top' %}">一覧・検索</a></li>
+            <li><a href="{% url 'blog:subscribe' %}">購読する</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'blog:private_post_list' %}">非公開</a></li>
+                <li><a href="{% url 'admin:login' %}" target="_blank">admin</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+
+
+<form action="{% url 'blog:top' %}" method="get" role="search" id="top-form">
+    {{ search_form.key_word }}<button type="submit" id="search">検索</button><br>
+    {% for field in search_form %}
+        {% if field.name != 'key_word' %}
+            <div class="dropdown-container">
+                <p class="dropdown-trigger">{{ field.label }}</p>
+                <div class="dropdown-item">
+                    {{ field }}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</form>
+
+{% block content %}{% endblock %}
+
+<footer id="site-footer">
+    <ul>
+        <li><a href="https://narito.ninja/">ポートフォリオ</a></li>
+        <li><a href="https://github.com/naritotakizawa/narito.ninja/tree/master/blog/" target="_blank" rel="nofollow">このブログのソースコード</a>
+        </li>
+        <li><a href="http://www.amazon.co.jp/registry/wishlist/2ZCE9KHVM7FRA/ref=cm_sw_r_tw_ws_f.aTzbDCX47K6"
+               target="_blank" rel="nofollow">欲しいもの</a></li>
+        <li>
+            <a href="https://www.amazon.co.jp/gp/profile/amzn1.account.AGTGNAWPJUIZH5QTUTN4USFNSO5Q/ref=cm_cr_dp_d_gw_tr?ie=UTF8"
+               target="_blank" rel="nofollow">書籍レビュー</a></li>
+        <li><a href="https://torina.top/" target="_blank" rel="nofollow">旧ブログ</a></li>
+        <li><a href="mailto:toritoritorina@gmail.com">メール</a></li>
+        <li>© GEN TOMITA</li>
+    </ul>
+</footer>
+
+<script>
+    // トップにある検索フォームの、各ドロップダウン展開イベント
+    document.addEventListener('DOMContentLoaded', () => {
+        for (const element of document.getElementsByClassName('dropdown-trigger')) {
+            element.addEventListener('click', e => {
+               element.nextElementSibling.classList.toggle('show');
+            });
+        }
+    });
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72333380-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-72333380-3');
+</script>
+
+</body>
+</html>

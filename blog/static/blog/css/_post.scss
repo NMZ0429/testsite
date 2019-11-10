@@ -1,0 +1,45 @@
+.post, .post-head {
+
+  > h1, > h2, > h3 {
+    font-size: 19px;
+    margin: 0;
+  }
+
+  > p.meta {
+    line-height: 1.5;
+    font-size: 14px;
+    color: #008000;
+    margin-top: 6px;
+    margin-bottom: 2px;
+
+    > span.created_at {
+
+    }
+
+    > span.tag {
+      display: inline-block;
+      margin-right: 10px;
+
+    }
+  }
+
+  > p.description {
+    line-height: 1.75;
+    font-size: 14px;
+
+    > time.updated_at {
+      font-size: 13px;
+      color: #999;
+    }
+  }
+
+}
+
+
+.post {
+  margin-bottom: 35px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}

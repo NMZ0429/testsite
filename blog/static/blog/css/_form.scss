@@ -1,0 +1,70 @@
+input[type="text"], input[type="email"], input[type="number"],
+select, textarea {
+  font-family: 'Source Code Pro', 'Sawarabi Gothic', sans-serif;
+  font-size: 14px;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: solid 1px #ccc;
+  background-color: #fff;
+
+}
+
+button[type="submit"], button[type="button"], a.button {
+  font-family: 'Sawarabi Gothic', sans-serif;
+  font-size: 14px;
+  -webkit-appearance: none;
+  padding: 7px 15px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: solid 1px #ccc;
+
+  /* a要素用の設定 */
+  box-sizing: border-box;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  color: #333;
+
+  /* button要素用の設定 */
+  cursor: pointer;
+
+}
+
+button[type="submit"]:hover, button[type="button"]:hover, a.button:hover {
+  opacity: 0.5;
+}
+
+span.helptext {
+  font-size: 12px;
+  color: #999;
+}
+
+ul.errorlist {
+  padding: 0;
+  list-style-type: none;
+  color: red;
+}
+
+
+div.field {
+  font-size: 14px;
+  margin-bottom: 20px;
+
+  > label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  > input, > select, > textarea, > button, > a.button {
+    width: 100%;
+    display: block;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+}
+

@@ -1,0 +1,119 @@
+@import "base";
+@import "header";
+@import "footer";
+
+
+body {
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr) 10px; /* pre code 対策のため、1fr→minmax(0, 1fr) */
+  grid-template-rows: [head] 100px [main] auto [foot] auto;
+  grid-row-gap: 40px;
+  row-gap: 40px;
+
+  > * {
+    grid-column: 2 / -2;
+  }
+
+  > header#site-header {
+    grid-row: head;
+    justify-self: start;
+    align-self: center;
+  }
+
+  > form#top-form {
+    display: none;
+    grid-row: head;
+    justify-self: start;
+    align-self: center;
+
+    > input#id_key_word {
+      margin-right: 10px;
+    }
+
+    > div.dropdown-container {
+      display: inline-block;
+      position: relative;
+      margin-right: 20px;
+
+      > p.dropdown-trigger {
+        font-size: 14px;
+        color: #666;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+      }
+
+      > div.dropdown-item {
+        display: none;
+        position: absolute;
+        background-color: #f5f5f5;
+        padding: 10px;
+        z-index: 1;
+
+        &.show {
+          display: block;
+        }
+
+        > select#id_search_tags {
+          height: 300px;
+        }
+
+      }
+    }
+
+  }
+
+  > footer {
+    grid-row: foot;
+    justify-self: start;
+    align-self: center;
+  }
+
+  &::before {
+    content: '';
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+    grid-column: 1 / -1;
+    grid-row: head;
+    z-index: -1;
+  }
+
+  &::after {
+    content: '';
+    background-color: #f5f5f5;
+    border-top: 1px solid #ccc;
+    grid-column: 1 / -1;
+    grid-row: foot;
+    z-index: -1;
+  }
+
+}
+
+@media (min-width: 768px) {
+  body {
+    grid-template-columns: 40px minmax(0, 1fr) 40px; /* pre code 対策のため、1fr→minmax(0, 1fr) */
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    grid-template-columns: 1fr [left] 564px [right]336px 1fr;
+    grid-column-gap: 100px;
+    column-gap: 100px;
+    grid-template-rows: [head] 100px [main] auto [foot] auto;
+
+    > header#site-header {
+      grid-row: head;
+      justify-self: end;
+      align-self: center;
+    }
+
+    > form#top-form {
+      display: block;
+
+    }
+  }
+}

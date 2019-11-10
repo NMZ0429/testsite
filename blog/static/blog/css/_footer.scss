@@ -1,0 +1,39 @@
+footer#site-footer {
+  font-size: 14px;
+  color: #666;
+  padding: 20px 0;
+  font-family: 'Source Code Pro', 'Sawarabi Gothic', sans-serif;
+
+  > ul {
+    list-style-type: none;
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: 10px;
+    row-gap: 10px;
+    padding: 0;
+
+    a {
+      text-decoration: none;
+      font-size: 14px;
+      color: #666;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+  }
+
+}
+
+@media (min-width: 1024px) {
+  footer#site-footer {
+    > ul {
+      grid-auto-flow: column;
+      grid-column-gap: 20px;
+      column-gap: 20px;
+    }
+
+  }
+
+}

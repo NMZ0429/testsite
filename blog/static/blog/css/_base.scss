@@ -1,0 +1,86 @@
+/* 共通設定 */
+* {
+  margin: 0;
+}
+
+  a {
+    color: #000d99;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3 {
+  line-height: 1.5;
+  background-color: transparent; /* admin管理画面用の設定 */
+  font-weight: normal;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 2;
+}
+
+body {
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; /* テキストの自動拡大を無効 */
+  color: #333;
+  font-family: 'Sawarabi Gothic', sans-serif;
+}
+
+/* お知らせ欄 */
+#notify {
+  opacity: 0;
+  background-color: #333;
+  padding: 20px;
+  width: 200px;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: #ffffff;
+  -webkit-animation: fade-in-out 7s linear;
+}
+
+@-webkit-keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: 0 1px 6px #ccc;
+  border-radius: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+
+@media (min-width: 1064px) {
+h1, h2, h3 {
+  margin-left: -1em;
+}
+}

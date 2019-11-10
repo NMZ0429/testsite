@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+    <form action="" method="POST" id="comment-form">
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            <div class="field">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.help_text %}
+                    <span class="helptext">{{ field.help_text }}</span>
+                {% endif %}
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+        {% csrf_token %}
+
+        <button type="submit">送信</button>
+        <a class="button" href="{% url 'blog:post_detail' post.pk %}">送信せずに戻る</a>
+    </form>
+
+{% endblock %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'blog/css/comment_form.css' %}">
+    {{ form.media }}
+{% endblock %}

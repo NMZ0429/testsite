@@ -1,0 +1,104 @@
+{% load static %}
+{% load diary %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description"
+          content="{% block description %}なりとの日記帳です。とりとめない呟きや、感想、思ったことを書いています。毒にも薬にもならないでしょう。{% endblock %}">
+    <link rel="stylesheet" href="{% static 'diaries/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400i|Noto+Serif+JP:300,500&display=swap"
+          rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <p id="title"><a href="{% url 'diaries:list' %}">My Diary</a></p>
+    <p id="subtitle">Copyright 2019 Gen Tomita.</p>
+</header>
+
+<nav id="menu">
+    <button class="menu-trigger" data-target="sub">Menu</button>
+</nav>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+
+<aside id="ads">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5235456993770661"
+         data-ad-slot="2942976583"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</aside>
+
+<aside id="sub">
+    <button class="menu-trigger" data-target="sub">Close</button>
+
+    <h2>Archives</h2>
+    {% render_month_links %}
+
+    <h2>Category</h2>
+    {% render_category_links %}
+
+    <h2>Link</h2>
+    <ul>
+        <li><a href="..">HOME</a></li>
+        <li><a href="mailto:toritoritorina@gmail.com">Email</a></li>
+        <li><a href="https://twitter.com/GenTomitaCa">Twitter Account</a></li>
+        <li><a href="https://github.com/NMZ0429">Github Account</a></li>
+        <li><a href="https://www.youtube.com/channel/UCKkxv5imYVE_OzbklvWV7DQ?view_as=subscriber">Official YouTube Channel</a>
+        </li>
+        <li><a href="https://github.com/naritotakizawa/narito.ninja/tree/master/diaries/">デバック用</a></li>
+    </ul>
+
+    <h2>Search</h2>
+    {% render_search_form request %}
+
+    <h2>Feeds</h2>
+    <ul>
+        <li><a href="{% url 'diaries:rss' %}">Latest Diaries</a></li>
+    </ul>
+
+</aside>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+
+    // ナビバーの開閉を設定
+    for (const trigger of document.getElementsByClassName('menu-trigger')) {
+        const menuId = trigger.dataset.target;
+        const menu = document.getElementById(menuId);
+        trigger.addEventListener('click', e => {
+            trigger.classList.toggle('active');
+            menu.classList.toggle('active');
+        });
+    }
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72333380-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-72333380-3');
+</script>
+</body>
+</html>

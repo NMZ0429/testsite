@@ -1,0 +1,29 @@
+@import "base_layout";
+@import "form";
+
+
+body {
+  grid-template-rows: [head] 100px [feed] auto [email] auto [line] auto [push] auto [ads] 280px [foot] auto;
+
+  > section {
+    margin-bottom: 100px;
+  }
+
+}
+
+@media (min-width: 1024px) {
+  body {
+    grid-template-rows: [head] 100px [feed ads] auto [email] auto [line] auto [push] auto [foot] auto;
+
+    > section, > p {
+      grid-column: left;
+    }
+
+    > aside#ads {
+      grid-row: ads;
+      grid-column: right;
+      height: 280px;
+    }
+
+  }
+}

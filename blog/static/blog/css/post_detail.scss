@@ -1,0 +1,71 @@
+@import "base_layout";
+@import "post";
+@import "form";
+@import "markdown";
+
+body {
+  grid-template-rows: [head] 100px [post-head] auto [ads] 280px [post-bodyl] auto [relation-posts] auto [comment] auto [foot] auto;
+
+  > nav#post-nav {
+    display: none;
+  }
+
+  > section {
+    margin-bottom: 100px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+  }
+
+}
+
+@media (min-width: 1024px) {
+  body {
+    grid-template-rows: [head] 100px [post-head ads] auto [post-body post-nav] auto [relation-posts] auto [comment] auto [foot] auto;
+
+    > div.post-head {
+      grid-column: left;
+      grid-row: post-head;
+    }
+
+    > aside#ads {
+      grid-column: right;
+      grid-row: ads;
+      height: 280px;
+    }
+
+    > section.markdown-body {
+      grid-column: left;
+      grid-row: post-body;
+      margin-top: 100px;
+
+      > div.toc {
+        display: none;
+      }
+    }
+
+    > nav#post-nav {
+      display: block;
+      grid-column: right;
+      grid-row: post-nav / -1;
+      align-self: start;
+      position: sticky;
+      top: 10px;
+      margin-top: 100px;
+    }
+
+    > section#relation-posts {
+      grid-column: left;
+      grid-row: relation-posts;
+    }
+
+    > section#comment {
+      grid-column: left;
+      grid-row: comment;
+    }
+
+
+  }
+}

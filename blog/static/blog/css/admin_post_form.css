@@ -1,0 +1,111 @@
+@charset "UTF-8";
+/* 目次 */
+.toc {
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+.toc > ul {
+  padding: 0;
+  padding-left: 20px;
+}
+.toc > ul li {
+  margin-bottom: 5px;
+}
+.toc > ul li a {
+  text-decoration: none;
+  color: #333;
+}
+.toc > ul li a.current::before {
+  content: "☞ ";
+  font-size: 16px;
+}
+.toc > ul li a:hover {
+  text-decoration: underline;
+}
+.toc > ul li > ul {
+  margin-top: 5px;
+}
+
+/* 記事やコメント欄、プレビューエリアの汎用的な設定 */
+.editor-preview code, .editor-preview-side code, .markdown-body code {
+  font-family: "Source Code Pro", monospace;
+}
+.editor-preview strong, .editor-preview-side strong, .markdown-body strong {
+  background: linear-gradient(transparent 60%, #ffff66 60%);
+  font-weight: normal;
+}
+.editor-preview pre, .editor-preview-side pre, .markdown-body pre {
+  margin-top: 0;
+}
+.editor-preview img, .editor-preview-side img, .markdown-body img {
+  margin-top: 0;
+  max-width: 100%;
+  height: auto;
+  border: solid 1px #ccc;
+}
+.editor-preview p, .editor-preview-side p, .markdown-body p {
+  margin-top: 30px;
+}
+.editor-preview h2, .editor-preview-side h2, .markdown-body h2 {
+  font-size: 30px;
+  margin-top: 140px;
+  margin-bottom: 30px;
+}
+.editor-preview h2:first-of-type, .editor-preview-side h2:first-of-type, .markdown-body h2:first-of-type {
+  margin-top: 0;
+}
+.editor-preview h3, .editor-preview-side h3, .markdown-body h3 {
+  font-size: 30px;
+  margin-top: 140px;
+  margin-bottom: 30px;
+}
+.editor-preview h3::before, .editor-preview-side h3::before, .markdown-body h3::before {
+  content: "↪ ";
+}
+.editor-preview blockquote, .editor-preview-side blockquote, .markdown-body blockquote {
+  position: relative;
+  margin: 2em 0;
+  padding: 1em 1em 1em 2.6em;
+  font-size: 0.9em;
+  border-left: 5px solid #ccc;
+  border-radius: 2px;
+}
+.editor-preview blockquote::after, .editor-preview-side blockquote::after, .markdown-body blockquote::after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: "”";
+  font-family: sans-serif;
+  font-size: 6em;
+  opacity: 0.1;
+}
+.editor-preview ul p + p, .editor-preview ol p + p, .editor-preview-side ul p + p, .editor-preview-side ol p + p, .markdown-body ul p + p, .markdown-body ol p + p {
+  margin-top: 5px;
+}
+
+ul.dropdown {
+  display: none;
+  list-style-type: none;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  background-color: #fff;
+}
+ul.dropdown li {
+  margin: 3px;
+  cursor: pointer;
+}
+ul.dropdown li:hover {
+  opacity: 0.5;
+}
+
+.suggest-item {
+  cursor: pointer;
+  color: #333;
+}
+
+.suggest-item:hover {
+  opacity: 0.5;
+}
+
+/*# sourceMappingURL=admin_post_form.css.map */

@@ -1,0 +1,32 @@
+@import "base_layout";
+@import "post";
+@import "page";
+@import "form";
+
+
+body {
+  grid-template-rows: [head] 100px [post-list] auto [page] auto [ads] 280px [foot] auto;
+}
+
+@media (min-width: 1024px) {
+  body {
+    grid-template-rows: [head] 100px [post-list ads] auto [page] auto [foot] auto;
+
+    > section#post-list {
+      grid-row: post-list;
+      grid-column: left;
+    }
+
+    > nav#page {
+      grid-row: page;
+      grid-column: left;
+    }
+
+
+    > aside#ads {
+      grid-row: ads;
+      grid-column: right;
+      height: 280px;
+    }
+  }
+}
